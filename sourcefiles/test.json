@@ -1,0 +1,5 @@
+[{"id": 1, "name": "Rajesh", "address": "Lotus Boulevard", "city": "Noida", "zip": "201304", "state": "Uttar Pradesh"},
+{"id": 2, "name": "Ramesh", "address": "Rose Boulevard", "city": "Gurgaon", "zip": "122016", "state": "Haryana"},
+{"id":3, "name": "Mahesh", "address": "Jasmine Boulevard", "city": "Faridabad", "zip": "132201", "state": "Haryana"},
+{"id":4, "name": "Suresh", "address": "Hibiscus Boulevard", "city": "Delhi", "zip": "110011", "state": "Delhi"}
+]

@@ -1,0 +1,66 @@
+{
+  "name": "person_record",
+  "namespace": "nifi_csv_example2
+  "type": "record",
+  "fields": [
+    { "name": "firstname",  "type": ["string", "null"] },
+    { "name": "lastname",    "type": ["string", "null"] },
+    { "name": "expenses", "type": {"type": "bytes", "logicalType": "decimal", "precision": 11, "scale": 2 } }
+  ]
+}
+
+{
+  "name": "employee_details",
+  "namespace": "nifi_csv_example3",
+  "type": "record",
+  "fields": [
+	{ "name": "id", "type": "int" },
+    { "name": "first_name", "type": ["string", "null"] },
+	{ "name": "last_name", "type": ["string", "null"] },
+	{ "name": "company_name", "type": ["string", "null"] },
+	{ "name": "address", "type": ["string", "null"] },
+	{ "name": "city", "type": ["string", "null"] },
+	{ "name": "county", "type": ["string", "null"] },
+	{ "name": "state", "type": ["string", "null"] },
+	{ "name": "zip", "type": "int"},
+	{ "name": "phone1", "type": ["string", "null"] },
+	{ "name": "phone2", "type": ["string", "null"] },
+	{ "name": "email", "type": ["string", "null"] },
+	{ "name": "web", "type": ["string", "null"] }
+  ]
+}
+
+{
+  "name": "employee_details",
+  "namespace": "nifi_csv_example3",
+  "type": "record",
+  "fields": [
+	{ "name": "employeeid", "type": "int" },
+    { "name": "employeename", "type": ["string", "null"] },
+	{ "name": "employeeaddress", "type": ["string", "null"] },
+	{ "name": "primaryphone", "type": ["string", "null"] },
+	{ "name": "secondaryphone", "type": ["string", "null"] },
+	{ "name": "email", "type": ["string", "null"] }
+  ]
+}
+
+C:\\WorkingDir\\Training\\Others\\jarfiles\\postgresql-42.5.0.jar
+
+${field.value:concat(${firstname},${lastname})}
+
+
+{
+  "namespace": "person_record_new",
+  "name": "nifi_csv_example2",
+  "type": "record",
+  "fields": [
+    { "name": "id", "type": "int" },
+    { "name": "name": "type": "string" },
+    { "name": "balance": "type": "double" },
+    { "name": "join_date", "type": {
+      "type": "int",
+      "logicalType": "date"
+    }},
+    { "name": "notes": "type": "string" }
+  ]
+}

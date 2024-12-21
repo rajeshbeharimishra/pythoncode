@@ -1,0 +1,20 @@
+{
+    "data": [
+        {
+            "TypeID": [
+                "AA"
+            ],
+            "Type": [
+                "Database Instance"
+            ]
+        },
+        {
+            "TypeID": [
+                "AA"
+            ],
+            "Type": [
+                "Database Schema"
+            ]
+        }
+    ]
+}

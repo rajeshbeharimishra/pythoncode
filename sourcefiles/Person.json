@@ -1,0 +1,9 @@
+{
+"first_name": "Rajesh", 
+"last_name" :"Mishra", 
+"age" : 14,
+"phone_number": 123, 
+"email" :"rbmishra@infogix.com", 
+"password" : "201$Password",
+"gender" : "Males"
+}
