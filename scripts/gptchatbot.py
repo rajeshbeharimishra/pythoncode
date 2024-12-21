@@ -2,7 +2,7 @@ import json
 from flask import Flask, render_template, request, jsonify
 import openai
 
-openai.api_key = "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"
+openai.api_key = ""
 gptchatbot = Flask(__name__)
 
 messages = [{"role": "assistant", "content": "I am OpenAI based Assistant to answer real estate questions"}]

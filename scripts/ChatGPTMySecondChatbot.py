@@ -6,7 +6,7 @@ from openai.error import RateLimitError
 app="ChatGPTMySecondChatbot"
 app = Flask(__name__)
 #openai.api_key = os.getenv("OPENAI_API_KEY")
-openai.api_key = "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"
+openai.api_key = ""
 
 @app.route('/')
 def index():
