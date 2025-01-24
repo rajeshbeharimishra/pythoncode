@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Form</title>
+</head>
+
+<body>
+	<table align="center"> <tr> <td> <h1 align="center">Matching Form</h1>
+    <form action="/calculate" method="post">
+		<table>
+			<tr bgcolor="#39107B">
+				<td>
+					<h3 align="center" style="color: white;">Name</h3> 
+				</td>
+				
+				<td>
+					<h3 align="center" style="color: white;">Date of Birth</h3> 
+				</td>
+				
+				<td>
+					<h3 align="center" style="color: white;">Email</h3>
+				</td>
+				
+				<td>
+					<h3 align="center" style="color: white;">Phone</h3>
+				</td>
+				
+				<td>
+					<h3 align="center" style="color: white;">ID&nbsp;&nbsp;<select id="id_type" name="id_type" required>
+							<option value="SSN">SSN</option>
+							<option value="Passport">Passport</option>
+							<option value="Driving License">Driving License</option>
+							<option value="Others">Others</option>
+						</select></h3>
+				</td>
+				
+			</tr>
+			
+			<tr bgcolor="#D9EEEF">
+				<td>
+					
+					<label>Name 1:</label><br>
+					<input type="text" name="name1" required><br>
+					<label>Name 2:</label><br>
+					<input type="text" name="name2" required><br>
+				</td>
+				
+				<td>
+					<label>DOB 1:</label><br>
+					<input type="date" name="dob1" required><br>
+					<label>DOB 2:</label><br>
+					<input type="date" name="dob2" required><br>
+				</td>
+				
+				<td>
+					<label>Email 1:</label><br>
+					<input type="email" name="email1" required><br>
+					<label>Email 2:</label><br>
+					<input type="email" name="email2" required><br>
+				</td>
+				
+				<td>	
+					<label>Phone 1:</label><br>
+					<input type="text" name="phone1" required><br>
+					<label>Phone 2:</label><br>
+					<input type="text" name="phone2" required><br>
+				</td>
+				
+				<td>
+					<label>ID 1:</label><br>
+					<input type="text" id="id1" name="id1" required><br>
+					<label>ID 2:</label><br>
+					<input type="text" id="id2" name="id2" required><br>
+				</td>
+			</tr>
+			
+			
+			<tr bgcolor="#39107B">
+				<td colspan=5>
+					<h3 align="center" style="color: white;">Address</h3>
+				</td>
+			</tr>
+			
+			<tr bgcolor="#D9EEEF">
+				<td colspan=3>
+					<label>Address 1:</label><br>
+					<input type="text" name="addr1" required><br>
+					<label>City 1:</label><br>
+					<input type="text" name="city1" required><br>
+					<label>State 1:</label><br>
+					<input type="text" name="state1" required><br>
+					<label>ZIP 1:</label><br>
+					<input type="text" name="zip1" required><br><br>
+				</td>
+				<td colspan=2>
+					<label>Address 2:</label><br>
+					<input type="text" name="addr2" required><br>
+					<label>City 2:</label><br>
+					<input type="text" name="city2" required><br>
+					<label>State 2:</label><br>
+					<input type="text" name="state2" required><br>
+					<label>ZIP 2:</label><br>
+					<input type="text" name="zip2" required><br><br>
+				</td>
+			</tr>
+			
+			<tr bgcolor="#39107B">
+				<td colspan=5>
+					<div style="display: flex; justify-content: center; align-items: center; height: 20px;">
+						<button type="submit">Calculate</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<p id="validation-message" style="color: red;"></p>
+    </form>
+	</td></tr></table>
+	<script>
+        function validateOnSubmit(e) {
+			//alert("inside the validateOnSubmit function");
+            const idType = document.getElementById("id_type").value;
+			//alert(idType)
+            const id1 = document.getElementById("id1").value.trim();
+			//alert("id1=="+id1);
+            const id2 = document.getElementById("id2").value.trim();
+			//alert("id2=="+id2);
+            const validationMessage = document.getElementById("validation-message");
+
+            let valid = true;
+
+            // Reset validation message
+            validationMessage.textContent = "";
+
+            if (idType==="SSN") {
+                const ssnRegex = /^\d{3}-\d{2}-\d{4}$/;
+                if (!ssnRegex.test(id1) || !ssnRegex.test(id2)) {
+                    valid = false;
+                    validationMessage.textContent = "SSN must follow the format XXX-XX-XXXX";
+					console.log("Validation Failed: SSN format invalid.");
+                }
+            } else if (idType === "Passport") {
+                const passportRegex = /^[A-Z0-9]{6,9}$/;
+                if (!passportRegex.test(id1) || !passportRegex.test(id2)) {
+                    valid = false;
+                    validationMessage.textContent = "Passport numbers must be alphanumeric and 6-9 characters long.";
+					console.log("Validation Failed: Passport format invalid.");
+                }
+            } else if (idType === "Driving License") {
+                const dlRegex = /^[A-Z0-9-]{6,15}$/;
+                if (!dlRegex.test(id1) || !dlRegex.test(id2)) {
+                    valid = false;
+                    validationMessage.textContent = "Driving license numbers must be 6-15 characters long and can include hyphens.";
+					console.log("Validation Failed: Driving License format invalid.");
+                }
+            } else {
+				valid = true;
+			}
+			
+			//alert(valid);
+
+            // Prevent form submission if validation fails
+            if (!valid) {
+				//alert(valid);
+                e.preventDefault();
+            }
+        }
+
+        // Attach the validation function to the form submission event
+        document.querySelector("form").addEventListener("submit", validateOnSubmit);
+    </script>
+</body>
+</html>
